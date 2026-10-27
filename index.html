@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#f7eee7">
+    <meta name="description" content="Acompañanos a descubrir si será niño o niña.">
+    <title>¿Soy niño o niña? | Revelación</title>
+    <!-- Información general de la invitación -->
+<meta name="description"
+    content="Te invitamos a compartir una sorpresa muy especial. ¿Será niño o niña? ¡Acompañanos a descubrirlo!">
+
+    <!-- Vista previa al compartir el enlace -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_AR">
+    <meta property="og:title"
+        content="¿Niño o niña? | Revelación de género">
+    <meta property="og:description"
+        content="14 de noviembre · 16:00 hs · Toca para ver.">
+    <meta property="og:url"
+    content="https://lumsoner.github.io/revelacion-cami/">
+    <meta property="og:image"
+    content="https://lumsoner.github.io/revelacion-cami/portada-link.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630"
+    <meta property="og:image:alt"
+        content="Portada de la invitación a la revelación de género">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Tipografías elegantes, como en la invitación de referencia -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- =====================================================
+PORTADA INICIAL: SOBRE Y MINI INVITACIÓN
+===================================================== -->
+    <section class="portada-inicial" id="portadaSobre" aria-label="Abrir la invitación">
+        <div class="marco-portada" aria-hidden="true"></div>
+        <div class="escena-sobre" id="escenaSobre">
+            <p class="sobre-etiqueta">UNA DULCE ESPERA</p>
+            <div class="tarjeta-sobre" aria-label="Mini invitación a la revelación de género">
+                <span class="tarjeta-linea">REVELACIÓN DE GÉNERO</span>
+                <span class="tarjeta-numero" aria-hidden="true">✧</span>
+                <span class="tarjeta-nombre">¿Niño o niña?</span>
+            </div>
+            <div class="sobre" aria-hidden="true">
+                <div class="sobre-cuerpo"></div>
+                <div class="sobre-lateral sobre-lateral-izquierdo"></div>
+                <div class="sobre-lateral sobre-lateral-derecho"></div>
+                <div class="sobre-base"></div>
+                <div class="sobre-solapa"></div>
+                <div class="sello-sobre"><span>❤</span></div>
+            </div>
+            <p class="mensaje-sobre">Una sorpresa muy especial para vos</p>
+            <button id="abrirSobre" class="boton boton-principal boton-abrir-sobre" type="button">
+                ABRIR INVITACIÓN
+            </button>
+            <p class="portada-pie">14 · NOVIEMBRE · 2026</p>
+        </div>
+    </section>
+    <main class="invitacion" id="invitacion" hidden>
+        <!-- 1. PRESENTACIÓN -->
+        <header class="portada">
+            <h1 class="titulo-principal">¿Soy niño o niña?</h1>
+            <p class="etiqueta-portada">UNA DULCE ESPERA</p>
+            <div class="linea-decorativa linea-corta" aria-hidden="true"></div>
+            <div class="equipos-bebe" id="equiposBebe">
+                <img class="imagen-equipo" data-equipo="nino" src="team-boy.png" alt="Team Boy">
+                <img class="imagen-equipo" data-equipo="nina" src="team-girl.png" alt="Team Girl">
+            </div>
+            <p class="frase-destacada">Hay momentos que se vuelven inolvidables cuando los compartimos.</p>
+            <div class="linea-decorativa" aria-hidden="true"></div>
+            <p class="texto-presentacion">Queremos invitarte a compartir con nosotros una sorpresa muy especial.</p>
+        </header>
+
+        <!-- 2. FECHA, HORARIO Y CUENTA REGRESIVA -->
+        <section class="seccion-invitacion seccion-fecha" id="fecha">
+            <h2 class="titulo-seccion">Reservá tu fecha</h2>
+            <div class="linea-decorativa" aria-hidden="true"></div>
+            <p class="dia-evento" id="diaEvento">SÁBADO</p>
+            <p class="fecha-evento" id="fechaEvento">14 DE NOVIEMBRE</p>
+            <div class="linea-decorativa linea-corta" aria-hidden="true"></div>
+            <p class="horario-evento" id="horarioEvento">16:00 HS</p>
+            <div class="cuenta-regresiva" aria-label="Tiempo que falta para el evento">
+                <div class="unidad-tiempo">
+                    <span class="numero-tiempo" id="dias">--</span>
+                    <span class="nombre-unidad">DÍAS</span>
+                </div>
+                <span class="separador-tiempo" aria-hidden="true">|</span>
+                <div class="unidad-tiempo">
+                    <span class="numero-tiempo" id="horas">--</span>
+                    <span class="nombre-unidad">HORAS</span>
+                </div>
+                <span class="separador-tiempo" aria-hidden="true">|</span>
+                <div class="unidad-tiempo">
+                    <span class="numero-tiempo" id="minutos">--</span>
+                    <span class="nombre-unidad">MINUTOS</span>
+                </div>
+            </div>
+            <p class="texto-secundario" id="mensajeCuentaRegresiva" aria-live="polite"></p>
+        </section>
+
+        <!-- 3. PRESENTACIÓN DEL JUEGO Y RESUMEN FINAL -->
+        <section class="seccion-invitacion seccion-juego-portada" id="juego">
+            <h2 class="titulo-seccion" id="tituloJuegoPortada">Adiviná qué soy</h2>
+            <div class="linea-decorativa" aria-hidden="true"></div>
+            <p class="texto-juego" id="textoJuegoPortada">¿Qué te dice tu intuición? Elegí tu equipo y descubrí tu predicción.</p>
+            <button class="boton boton-principal" id="botonEmpezarJuego" type="button">Hacer mi predicción</button>
+            <div class="resumen-final" id="resumenFinal" hidden aria-live="polite">
+                <p class="resumen-sobretitulo">TU APUESTA QUEDÓ ANOTADA</p>
+                <p class="texto-resumen" id="textoResumenPrediccion"></p>
+                <div class="tarjeta-equipo">
+                    <img
+                        id="imagenMision"
+                        class="imagen-mision"
+                        src="team-boy.png"
+                        alt=""
+                    >
+                    <p class="etiqueta-equipo" id="etiquetaEquipoQueTraer">UNA MISIÓN PARA TU TEAM</p>
+                    <p class="texto-equipo" id="textoEquipoQueTraer"></p>
+                </div>
+                <p class="cierre-resumen">Gracias por ser parte de esta dulce espera. ¡Qué lindo compartir esta aventura con vos!</p>
+                <button class="enlace-texto" id="botonVolverAJugar" type="button">Quiero cambiar mi predicción</button>
+            </div>
+        </section>
+
+        <!-- 6. UBICACIÓN -->
+        <section class="seccion-invitacion" id="ubicacion">
+            <h2 class="titulo-seccion">¿Dónde nos encontramos?</h2>
+            <div class="linea-decorativa" aria-hidden="true"></div>
+            <p class="texto-juego">Nos encantaría compartir este momento con vos.</p>
+            <p class="datos-evento" id="direccionEvento">Belgrano 871</p>
+            <a class="boton boton-contorno" id="botonUbicacion" href="https://share.google/TdPtxuntMd5oGbh9C" target="_blank" rel="noopener noreferrer">Ver ubicación ↗</a>
+        </section>
+
+        <!-- 7. CONFIRMACIÓN DE ASISTENCIA -->
+        <section class="seccion-invitacion confirmacion" id="confirmacion">
+            <h2 class="titulo-seccion">¿Nos acompañás?</h2>
+            <div class="linea-decorativa" aria-hidden="true"></div>
+            <p class="texto-juego">
+                Por favor, indicá el nombre y apellido de cada persona que asistirá.
+            </p>
+            <form id="formConfirmacion" novalidate>
+                <div id="invitados" class="lista-invitados">
+                    <div class="fila-invitado">
+                        <input
+                            id="invitado-1"
+                            class="input-invitado"
+                            name="invitado[]"
+                            type="text"
+                            placeholder="Nombre y apellido"
+                            aria-label="Nombre y apellido del invitado 1"
+                            maxlength="100"
+                            autocomplete="name"
+                            required>
+                    </div>
+                </div>
+                <button id="agregarInvitado" class="boton boton-contorno boton-agregar" type="button">
+                    + AGREGAR INVITADO
+                </button>
+                <button id="btnConfirmar" class="boton boton-principal boton-enviar" type="submit">
+                    CONFIRMAR ASISTENCIA ↗
+                </button>
+                <p id="estadoConfirmacion" class="estado-confirmacion" aria-live="polite"></p>
+            </form>
+        </section>
+    </main>
+
+    <!-- =====================================================
+PANTALLA FINAL DESPUÉS DE VOLVER DE WHATSAPP
+===================================================== -->
+    <section id="pantallaGracias" class="pantalla-gracias" hidden aria-labelledby="tituloGracias">
+        <div class="cierre-gracias">
+            <p class="final-sobrelinea">REVELACIÓN DE GÉNERO</p>
+            <p class="final-ornamento" aria-hidden="true">♡</p>
+            <h2 id="tituloGracias" class="frase-final">¡Gracias!</h2>
+            <p class="mensaje-final">
+                Qué lindo que seas parte de este momento tan especial.
+                ¡Nos vemos para descubrir la sorpresa!
+            </p>
+            <p id="fechaFinal" class="fecha-final">SÁBADO · 14 DE NOVIEMBRE · 16:00 HS</p>
+            <div class="final-linea" aria-hidden="true"></div>
+            <p class="firma">¡Te esperamos con mucho amor!</p>
+            <p class="nota-final">Recordá enviar el mensaje en WhatsApp para completar la confirmación.</p>
+            <button id="volverInvitacion" class="boton boton-principal boton-volver" type="button">
+                VOLVER A LA INVITACIÓN
+            </button>
+        </div>
+    </section>
+
+    <!-- =====================================================
+VENTANA SUPERPUESTA PARA LOS JUEGOS
+===================================================== -->
+    <div class="modal-juego" id="modalJuego" hidden>
+        <button class="fondo-modal" id="fondoModal" type="button" aria-label="Cerrar el juego"></button>
+        <section class="contenido-modal" role="dialog" aria-modal="true" aria-labelledby="tituloModalJuego" tabindex="-1">
+            <button class="cerrar-modal" id="botonCerrarJuego" type="button" aria-label="Cerrar juego">×</button>
+            <p class="texto-superior" id="pasoJuego">JUEGO 1 DE 2</p>
+            <h2 class="titulo-seccion titulo-modal" id="tituloModalJuego">¿Niño o niña?</h2>
+            <div class="linea-decorativa" aria-hidden="true"></div>
+
+            <!-- PASO 1: PREDICCIÓN -->
+            <section id="seccionPrediccion" class="paso-modal">
+                <p class="texto-juego">¿Qué te dice tu intuición? Elegí tu equipo.</p>
+                <div class="opciones-prediccion">
+                    <button class="boton-opcion" type="button" data-prediccion="nino" aria-pressed="false">🩵 Niño</button>
+                    <button class="boton-opcion" type="button" data-prediccion="nina" aria-pressed="false">🩷 Niña</button>
+                </div>
+                <div class="resultado-prediccion" id="resultadoPrediccion" aria-live="polite"></div>
+                <button class="boton boton-principal boton-siguiente" id="botonSiguienteJuego" type="button" disabled>Siguiente juego</button>
+            </section>
+
+            <!-- PASO 2: NOMBRE -->
+            <section id="seccionNombres" class="paso-modal" hidden>
+                <p class="texto-juego" id="introduccionNombres">Elegí una de las opciones para hacer tu apuesta. ¿Cuál será el nombre?</p>
+                <div class="opciones-nombres" id="listaNombres"></div>
+                <p class="texto-juego resultado-nombre" id="resultadoNombre" aria-live="polite"></p>
+                <button class="boton boton-principal boton-finalizar" id="botonFinalizarJuego" type="button" disabled>Finalizar mi predicción</button>
+            </section>
+        </section>
+    </div>
+</body>
+</html>

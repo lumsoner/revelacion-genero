@@ -1,0 +1,1099 @@
+/* =========================================================
+1. TIPOGRAFÍAS Y PALETA DE COLORES
+========================================================= */
+:root {
+    --fondo-pagina: #f8f0e9;
+    --fondo-contenido: #fffaf5;
+    --marron-oscuro: #604532;
+    --marron-medio: #89664d;
+    --marron-suave: #b18b6c;
+    --marron-claro: #d5bda7;
+    --beige: #eadbcb;
+    --marfil: #fffaf5;
+    --color-texto: var(--marron-medio);
+    --color-texto-oscuro: var(--marron-oscuro);
+    --color-acento: var(--marron-suave);
+    --color-linea: #d8bfa6;
+    --color-confeti: var(--marron-suave);
+    --color-boton-fondo: var(--marron-medio);
+    --color-boton-texto: var(--marfil);
+    --fuente-decorativa: 'Great Vibes', cursive;
+    --fuente-titulos: 'Cormorant Garamond', Georgia, serif;
+    --fuente-formal: 'Cinzel', Georgia, serif;
+    --fuente-texto: 'Cormorant Garamond', Georgia, serif;
+}
+
+/* Tema pastel celeste al elegir niño */
+body.tema-nino {
+    --fondo-pagina: #eff6fa;
+    --fondo-contenido: #fbfdff;
+    --color-texto: #6e8da5;
+    --color-texto-oscuro: #3f6079;
+    --color-acento: #91b9d2;
+    --color-linea: #c7dce8;
+    --color-confeti: #8dbbd8;
+    --color-boton-fondo: #91b9d2;
+    --color-boton-texto: #ffffff;
+}
+
+/* Tema pastel rosa al elegir niña */
+body.tema-nina {
+    --fondo-pagina: #fbf0f2;
+    --fondo-contenido: #fffafd;
+    --color-texto: #ad7888;
+    --color-texto-oscuro: #854f61;
+    --color-acento: #d09aaa;
+    --color-linea: #ecd0d8;
+    --color-confeti: #d6a0b0;
+    --color-boton-fondo: #d09aaa;
+    --color-boton-texto: #ffffff;
+}
+
+/* =========================================================
+2. ESTILOS GENERALES
+========================================================= */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    margin: 0;
+    overflow-x: hidden;
+    background: var(--fondo-pagina);
+    color: var(--color-texto);
+    font-family: var(--fuente-texto);
+    font-size: 19px;
+    line-height: 1.6;
+    transition: background-color .6s ease, color .6s ease;
+}
+button, a, input { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button { cursor: pointer; }
+button:focus-visible, a:focus-visible, input:focus-visible {
+    outline: 2px solid var(--color-acento);
+    outline-offset: 4px;
+}
+[hidden] { display: none !important; }
+
+/* =========================================================
+3. PORTADA INICIAL: SOBRE ANIMADO
+Paleta neutral independiente del cambio rosa/celeste del juego.
+   ========================================================= */
+.portada-inicial {
+    position: fixed;
+    z-index: 2000;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    overflow-y: auto;
+    padding: 24px 18px;
+    background:
+        radial-gradient(ellipse at 18% 18%, rgba(213, 189, 167, .28), transparent 40%),
+        radial-gradient(ellipse at 82% 78%, rgba(177, 139, 108, .13), transparent 38%),
+        linear-gradient(145deg, #fffaf5 0%, #f3e5d8 52%, #fbf6ef 100%);
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .85s ease, visibility .85s ease;
+    isolation: isolate;
+}
+
+.marco-portada {
+    position: absolute;
+    inset: 16px;
+    border: 1px solid rgba(137, 102, 77, .38);
+    outline: 1px solid rgba(177, 139, 108, .18);
+    outline-offset: 5px;
+    pointer-events: none;
+}
+
+.escena-sobre {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: min(100%, 440px);
+    margin: auto;
+    padding: 24px 10px;
+    text-align: center;
+    transition: opacity .55s ease, transform .65s ease, visibility .55s ease;
+}
+
+.sobre-etiqueta,
+.tarjeta-linea,
+.portada-pie {
+    color: var(--marron-medio);
+    font-family: var(--fuente-formal);
+    font-weight: 400;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+}
+
+.sobre-etiqueta {
+    margin: 0 0 22px;
+    font-size: .68rem;
+}
+
+.tarjeta-sobre {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: min(72vw, 280px);
+    height: 205px;
+    margin-bottom: -205px;
+    padding: 18px;
+    border: 1px solid rgba(137, 102, 77, .72);
+    outline: 1px solid rgba(177, 139, 108, .24);
+    outline-offset: -7px;
+    background: linear-gradient(145deg, #fffdf9, #ead9c7);
+    box-shadow: 0 8px 25px rgba(96, 69, 50, .10);
+    transform: translateY(0);
+    /* Primero se abre la solapa; después la tarjeta sube despacio. */
+    transition: transform 2s cubic-bezier(.22, .61, .36, 1) .85s;
+}
+
+.tarjeta-linea {
+    font-size: .58rem;
+    line-height: 1.6;
+}
+
+.tarjeta-numero {
+    margin: 3px 0 -4px;
+    color: var(--marron-medio);
+    font-family: var(--fuente-titulos);
+    font-size: 4.5rem;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.tarjeta-nombre {
+    color: var(--marron-oscuro);
+    font-family: var(--fuente-decorativa);
+    font-size: 2.45rem;
+    line-height: 1.2;
+}
+
+.sobre {
+    position: relative;
+    z-index: auto;
+    width: min(84vw, 340px);
+    height: 205px;
+    filter: none;
+}
+
+.sobre-cuerpo {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    border: 1px solid rgba(137, 102, 77, .65);
+    background: linear-gradient(145deg, #e5d0bb, #d4b89d);
+    box-shadow: 0 8px 15px rgba(96, 69, 50, .08);
+}
+
+.sobre-lateral {
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    border: 1px solid rgba(137, 102, 77, .38);
+    background: #e0c6ab;
+}
+
+.sobre-lateral-izquierdo {
+    clip-path: polygon(0 0, 53% 50%, 0 100%);
+}
+
+.sobre-lateral-derecho {
+    clip-path: polygon(100% 0, 47% 50%, 100% 100%);
+}
+
+.sobre-base {
+    position: absolute;
+    z-index: 3;
+    inset: 0;
+    border-bottom: 1px solid rgba(137, 102, 77, .6);
+    background: linear-gradient(145deg, #ead9c7, #d9bea3);
+    clip-path: polygon(0 100%, 50% 42%, 100% 100%);
+}
+
+.sobre-solapa {
+    position: absolute;
+    z-index: 5;
+    inset: 0 0 auto;
+    height: 64%;
+    border: 1px solid rgba(137, 102, 77, .65);
+    background: linear-gradient(160deg, #f1e4d7, #ddc3a9);
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    transform-origin: 50% 0;
+    transform: perspective(900px) rotateX(0deg);
+    transition: transform .85s ease, z-index 0s .4s;
+}
+
+.sello-sobre {
+    position: absolute;
+    z-index: 6;
+    top: 42%;
+    left: 50%;
+    display: grid;
+    place-items: center;
+    width: 49px;
+    height: 49px;
+    border: 1px solid #9f7957;
+    border-radius: 50%;
+    color: #fffaf5;
+    background: radial-gradient(circle at 35% 30%, #c7a783, #89664d);
+    box-shadow: 0 2px 5px rgba(96, 69, 50, .18), 0 0 0 3px rgba(255, 250, 245, .55);
+    transform: translate(-50%, -50%);
+    transition: opacity .3s ease, transform .45s ease;
+}
+
+.sello-sobre span {
+    font-family: var(--fuente-titulos);
+    font-size: 1.45rem;
+    line-height: 1;
+}
+
+.mensaje-sobre {
+    margin: 25px 0 17px;
+    color: var(--marron-medio);
+    font-family: var(--fuente-titulos);
+    font-size: 1.3rem;
+    font-style: italic;
+}
+
+.portada-pie {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+    margin-top: 27px;
+    color: var(--marron-medio);
+    font-size: .62rem;
+    letter-spacing: .13em;
+}
+
+.portada-pie::before,
+.portada-pie::after {
+    content: "";
+    display: block;
+    width: 22px;
+    height: 1px;
+    background: var(--marron-suave);
+}
+
+.boton-abrir-sobre {
+    min-width: 220px;
+    margin-top: 2px;
+    border-color: var(--marron-medio);
+    background: var(--marron-medio);
+    color: var(--marfil);
+    animation: pulso-sobre 2.8s ease-in-out infinite;
+}
+
+.boton-abrir-sobre:hover {
+    border-color: var(--marron-oscuro);
+    background: var(--marron-oscuro);
+}
+
+/* Abrir la solapa y deslizar la mini invitación hacia arriba. */
+.portada-inicial.sobre-abriendose .sobre-solapa {
+    z-index: 0;
+    transform: perspective(900px) rotateX(180deg);
+}
+
+.portada-inicial.sobre-abriendose .sello-sobre {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(.65);
+}
+
+.portada-inicial.sobre-abriendose .tarjeta-sobre {
+    /* Sube lo suficiente para que se lea la mini invitación. */
+    transform: translateY(-145px);
+}
+
+.portada-inicial.sobre-abierto .escena-sobre {
+    opacity: 0;
+    transform: translateY(-24px) scale(.97);
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.portada-inicial.saliendo {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+#invitacion.apareciendo {
+    animation: revelar-invitacion .9s ease both;
+}
+
+@keyframes revelar-invitacion {
+    from { opacity: 0; transform: translateY(17px) scale(.99); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes pulso-sobre {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(137, 102, 77, 0); }
+    50% { box-shadow: 0 0 0 6px rgba(137, 102, 77, .12); }
+}
+
+/* =========================================================
+4. CONTENEDOR PRINCIPAL Y PORTADA DE LA INVITACIÓN
+========================================================= */
+.invitacion {
+    width: min(100% - 28px, 488px);
+    margin: 0 auto;
+    padding: 28px 0 30px;
+}
+
+.portada {
+    padding: 28px 25px 43px;
+    text-align: center;
+}
+
+.titulo-principal {
+    margin: 0;
+    color: var(--color-texto-oscuro);
+    font-family: var(--fuente-decorativa);
+    font-size: clamp(3.8rem, 13vw, 5rem);
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.etiqueta-portada, .texto-superior {
+    margin: 7px 0 0;
+    color: var(--marron-suave);
+    font-family: var(--fuente-formal);
+    font-size: .66rem;
+    letter-spacing: .16em;
+    line-height: 1.8;
+    text-transform: uppercase;
+}
+
+.linea-decorativa {
+    width: 58px;
+    height: 1px;
+    margin: 14px auto 22px;
+    background: var(--color-linea);
+}
+
+.linea-corta { width: 42px; margin-top: 10px; margin-bottom: 20px; }
+.frase-destacada {
+    max-width: 360px;
+    margin: 22px auto 14px;
+    color: var(--color-texto);
+    font-family: var(--fuente-titulos);
+    font-size: 1.25rem;
+    font-style: italic;
+    line-height: 1.5;
+}
+
+.equipos-bebe {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: clamp(10px, 3vw, 18px);
+    width: 100%;
+    margin: 12px auto 18px;
+}
+
+.imagen-equipo {
+    display: block;
+    width: 43%;
+    max-width: 185px;
+    height: clamp(150px, 42vw, 205px);
+    object-fit: contain;
+    object-position: center bottom;
+    filter: drop-shadow(0 4px 5px rgba(96, 69, 50, .09));
+}
+
+/* =========================================================
+IMAGEN DEL EQUIPO ELEGIDO
+Se centra y aumenta ligeramente de tamaño.
+   ========================================================= */
+
+.equipos-bebe.equipo-elegido {
+    justify-content: center;
+    align-items: center;
+}
+
+.equipos-bebe.equipo-elegido .imagen-equipo:not([hidden]) {
+    width: 62%;
+    max-width: 230px;
+    height: clamp(180px, 50vw, 240px);
+    animation: aparecer-equipo 0.5s ease both;
+}
+
+@keyframes aparecer-equipo {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.92);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.texto-presentacion, .texto-juego {
+    max-width: 350px;
+    margin: 0 auto 16px;
+    color: var(--color-texto-oscuro);
+    font-size: 1.15rem;
+    line-height: 1.6;
+}
+
+/* =========================================================
+4. SECCIONES Y TÍTULOS
+========================================================= */
+.seccion-invitacion {
+    position: relative;
+    margin: 0;
+    padding: 37px 25px 40px;
+    text-align: center;
+    border-top: 1px solid var(--color-linea);
+}
+
+.titulo-seccion {
+    margin: 0;
+    color: var(--color-acento);
+    font-family: var(--fuente-decorativa);
+    font-size: clamp(2.5rem, 8vw, 3rem);
+    font-weight: 400;
+    line-height: 1.25;
+}
+
+.texto-superior { margin: 0 0 8px; }
+.texto-secundario {
+    margin: 14px auto 0;
+    color: var(--color-texto);
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+/* =========================================================
+5. FECHA Y CUENTA REGRESIVA
+========================================================= */
+.seccion-fecha { padding-top: 35px; padding-bottom: 40px; }
+.dia-evento {
+    margin: 0 0 2px;
+    color: var(--marron-suave);
+    font-family: var(--fuente-formal);
+    font-size: .68rem;
+    letter-spacing: .15em;
+}
+
+.fecha-evento {
+    margin: 0;
+    color: var(--color-texto-oscuro);
+    font-family: var(--fuente-titulos);
+    font-size: clamp(2rem, 7.5vw, 2.45rem);
+    font-weight: 400;
+    line-height: 1.3;
+    font-variant-numeric: lining-nums tabular-nums;
+}
+
+.horario-evento {
+    margin: 0;
+    color: var(--color-texto);
+    font-family: var(--fuente-formal);
+    font-size: .66rem;
+    letter-spacing: .08em;
+}
+
+.cuenta-regresiva {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(13px, 4vw, 22px);
+    margin: 24px auto 0;
+}
+
+.unidad-tiempo {
+    display: flex;
+    min-width: 58px;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.numero-tiempo {
+    display: block;
+    min-width: 2.35em;
+    color: var(--color-texto-oscuro);
+    font-family: var(--fuente-titulos);
+    font-size: clamp(2rem, 7vw, 2.5rem);
+    font-weight: 400;
+    font-variant-numeric: lining-nums tabular-nums;
+    font-feature-settings: "lnum" 1, "tnum" 1;
+    font-kerning: none;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.nombre-unidad {
+    color: var(--color-texto);
+    font-family: var(--fuente-formal);
+    font-size: .58rem;
+    letter-spacing: .08em;
+}
+
+.separador-tiempo {
+    align-self: center;
+    margin-top: -11px;
+    color: var(--marron-suave);
+    font-family: var(--fuente-titulos);
+    font-size: 1.5rem;
+}
+
+/* =========================================================
+6. BOTONES
+========================================================= */
+.boton {
+    display: inline-flex;
+    width: auto;
+    min-width: 170px;
+    max-width: 100%;
+    min-height: 42px;
+    align-items: center;
+    justify-content: center;
+    padding: 9px 22px;
+    border: 1px solid var(--color-acento);
+    border-radius: 999px;
+    font-family: var(--fuente-formal);
+    font-size: .69rem;
+    letter-spacing: .04em;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color .3s ease, color .3s ease, transform .3s ease;
+}
+
+.boton-principal { background: var(--color-boton-fondo); color: var(--color-boton-texto); }
+.boton-principal:hover { background: var(--marron-oscuro); transform: translateY(-1px); }
+.boton-contorno { background: transparent; color: var(--color-texto-oscuro); }
+.boton-contorno:hover { background: var(--color-acento); color: white; }
+body.tema-nino .boton-principal, body.tema-nina .boton-principal { background: var(--color-boton-fondo); color: var(--color-boton-texto); border-color: var(--color-boton-fondo); }
+body.tema-nino .boton-principal:hover, body.tema-nina .boton-principal:hover { filter: brightness(.95); }
+
+/* =========================================================
+7. JUEGOS Y OPCIONES
+========================================================= */
+.opciones-prediccion, .opciones-nombres {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 22px 0 16px;
+}
+
+.boton-opcion, .opcion-nombre {
+    min-height: 40px;
+    padding: 8px 19px;
+    border: 1px solid var(--color-linea);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--color-texto-oscuro);
+    font-family: var(--fuente-titulos);
+    font-size: 1.08rem;
+    line-height: 1.3;
+    transition: background-color .3s ease, color .3s ease, border-color .3s ease;
+}
+
+.boton-opcion:hover, .opcion-nombre:hover { border-color: var(--color-acento); background: var(--fondo-contenido); }
+.boton-opcion.seleccionado, .opcion-nombre.seleccionado { border-color: var(--color-acento); background: var(--color-acento); color: white; }
+.resultado-prediccion { margin: 14px auto 0; color: var(--color-texto-oscuro); }
+.icono-resultado { margin: 10px 0 0; font-size: 2.3rem; line-height: 1.3; }
+.texto-resultado { margin: 5px 0 10px; color: var(--color-texto-oscuro); font-size: 1.08rem; line-height: 1.6; }
+.enlace-texto {
+    margin-top: 12px;
+    padding: 6px;
+    border: 0;
+    background: transparent;
+    color: var(--color-texto);
+    font-family: var(--fuente-formal);
+    font-size: .68rem;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.resultado-nombre {
+    min-height: 1.5em;
+    margin-top: 16px;
+    color: var(--color-texto-oscuro);
+    font-family: var(--fuente-titulos);
+    font-size: 1.15rem;
+    font-style: italic;
+}
+
+/* Las opciones de nombres son cerradas: se elige una de la lista. */
+.opcion-nombre {
+    min-width: 110px;
+    padding: 9px 20px;
+}
+
+/* =========================================================
+8. VENTANA SUPERPUESTA DE LOS JUEGOS
+========================================================= */
+body.juego-abierto { overflow: hidden; }
+.modal-juego {
+    position: fixed;
+    z-index: 1000;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 22px;
+}
+
+.fondo-modal {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: rgba(43, 31, 23, .58);
+    cursor: default;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+}
+
+.contenido-modal {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 460px);
+    max-height: min(86vh, 760px);
+    overflow-y: auto;
+    padding: 36px 28px 30px;
+    border: 1px solid var(--color-linea);
+    border-radius: 8px;
+    background: var(--fondo-contenido);
+    color: var(--color-texto);
+    text-align: center;
+    box-shadow: 0 22px 70px rgba(39, 28, 20, .24);
+    animation: aparecer-modal .28s ease-out;
+}
+
+.cerrar-modal {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    border: 0;
+    background: transparent;
+    color: var(--color-texto);
+    font-family: var(--fuente-texto);
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.cerrar-modal:hover { color: var(--color-texto-oscuro); }
+.titulo-modal { margin: 4px 18px 0; font-size: clamp(2.35rem, 8vw, 2.8rem); }
+.paso-modal { padding-top: 2px; }
+.paso-modal .texto-juego { margin-top: 8px; }
+.boton-siguiente, .boton-finalizar { margin-top: 15px; }
+.boton:disabled {
+    cursor: not-allowed;
+    opacity: .42;
+    transform: none;
+}
+/* =========================================================
+RESUMEN FINAL DEL JUEGO
+Predicción y aviso del equipo, con una estética delicada.
+   ========================================================= */
+.resumen-final {
+    max-width: 390px;
+    margin: 26px auto 0;
+    padding-top: 22px;
+    border-top: 1px solid var(--color-linea);
+    animation: aparecer-resumen .55s ease both;
+}
+
+.resumen-sobretitulo {
+    margin: 0 0 12px;
+    color: var(--color-acento);
+    font-family: var(--fuente-formal);
+    font-size: .62rem;
+    letter-spacing: .15em;
+    line-height: 1.7;
+}
+
+.texto-resumen {
+    margin: 0 auto 18px;
+    color: var(--color-texto-oscuro);
+    font-family: var(--fuente-titulos);
+    font-size: 1.3rem;
+    line-height: 1.55;
+}
+
+.tarjeta-equipo {
+    position: relative;
+    margin: 22px auto 18px;
+    padding: 20px 19px 18px;
+    border: 1px solid var(--color-linea);
+    outline: 1px solid color-mix(in srgb, var(--color-linea) 38%, transparent);
+    outline-offset: -6px;
+    background: linear-gradient(145deg, var(--fondo-contenido), var(--fondo-pagina));
+}
+
+.adorno-equipo {
+    display: block;
+    margin: 0 auto 7px;
+    color: var(--color-acento);
+    font-size: 1.45rem;
+    line-height: 1.1;
+}
+
+.imagen-mision {
+    display: block;
+    width: 145px;
+    height: 125px;
+    margin: 0 auto 12px;
+    object-fit: contain;
+}
+
+.etiqueta-equipo {
+    margin: 0 auto 10px;
+    color: var(--color-texto-oscuro);
+    font-family: var(--fuente-formal);
+    font-size: .64rem;
+    line-height: 1.7;
+    letter-spacing: .1em;
+}
+
+.texto-equipo {
+    margin: 0 auto;
+    color: var(--color-texto);
+    font-family: var(--fuente-titulos);
+    font-size: 1.15rem;
+    line-height: 1.55;
+    font-style: italic;
+}
+
+.cierre-resumen {
+    max-width: 330px;
+    margin: 17px auto 15px;
+    color: var(--color-texto);
+    font-family: var(--fuente-titulos);
+    font-size: 1.08rem;
+    line-height: 1.5;
+}
+
+@keyframes aparecer-resumen {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes aparecer-modal {
+    from { opacity: 0; transform: translateY(12px) scale(.985); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* =========================================================
+9. UBICACIÓN Y CIERRE
+========================================================= */
+.datos-evento {
+    max-width: 350px; 
+    margin: 0 auto 18px; 
+    color: var(--color-texto-oscuro); 
+    font-size: 1.5rem; line-height: 1.6; 
+}
+
+.pie-invitacion { 
+    padding: 25px 12px 8px; 
+    border-top: 1px solid var(--color-linea); 
+    color: var(--color-texto); 
+    text-align: center; 
+}
+
+.pie-invitacion .linea-decorativa { 
+    margin-top: 0; 
+}
+
+.pie-invitacion p { 
+    margin: 0; 
+    font-family: var(--fuente-decorativa); 
+    font-size: 2.2rem; 
+    line-height: 1.3; 
+}
+
+.detalle-final { 
+    display: block; 
+    margin-top: 5px; 
+    color: var(--color-acento); 
+    font-size: 1.5rem; 
+}
+
+/* =========================================================
+10. FORMULARIO DE CONFIRMACIÓN DE ASISTENCIA
+Adaptado al estilo neutro de la revelación de género.
+========================================================= */
+.confirmacion {
+    padding-bottom: 35px;
+}
+
+#formConfirmacion {
+    width: 100%;
+    max-width: 430px;
+    margin: 24px auto 0;
+}
+
+.lista-invitados {
+    display: grid;
+    gap: 12px;
+    width: 100%;
+    margin: 0 auto 16px;
+}
+
+.fila-invitado {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    width: 100%;
+}
+
+.input-invitado {
+    width: 100%;
+    min-width: 0;
+    min-height: 48px;
+    padding: 11px 15px;
+    border: 1px solid var(--color-linea);
+    border-radius: 5px;
+    background: var(--fondo-contenido);
+    color: var(--color-texto-oscuro);
+    font-family: var(--fuente-texto);
+    font-size: 1.05rem;
+    transition: border-color .25s ease, background-color .4s ease;
+}
+
+.input-invitado::placeholder {
+    color: var(--marron-suave);
+    opacity: 1;
+}
+
+.input-invitado:focus {
+    border-color: var(--color-acento);
+    outline: none;
+}
+
+.btn-eliminar {
+    flex: 0 0 38px;
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--color-linea);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--color-texto);
+    font-family: var(--fuente-texto);
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color .25s ease, color .25s ease;
+}
+
+.btn-eliminar:hover {
+    background: var(--color-boton-fondo);
+    color: var(--color-boton-texto);
+}
+
+#formConfirmacion .boton-agregar,
+#formConfirmacion .boton-enviar {
+    display: flex;
+    width: min(100%, 340px);
+    min-height: 47px;
+    margin: 12px auto 0;
+}
+
+#formConfirmacion .boton-agregar {
+    background: transparent;
+    color: var(--color-texto-oscuro);
+}
+
+#formConfirmacion .boton-agregar:hover {
+    background: var(--fondo-contenido);
+}
+
+.estado-confirmacion {
+    max-width: 390px;
+    min-height: 0;
+    margin: 14px auto 0;
+    color: var(--color-texto);
+    font-size: 1rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.estado-confirmacion a {
+    display: inline-block;
+    margin-left: 4px;
+    color: var(--color-texto-oscuro);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+/* =========================================================
+11. PANTALLA FINAL AL REGRESAR DE WHATSAPP
+Mantiene los tonos del tema elegido en el juego.
+========================================================= */
+.pantalla-gracias {
+    position: fixed;
+    z-index: 3000;
+    inset: 0;
+    isolation: isolate;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: 38px 24px;
+    overflow-y: auto;
+    background:
+        radial-gradient(ellipse at 50% 24%, rgba(213, 189, 167, .24), transparent 54%),
+        linear-gradient(145deg, var(--fondo-contenido), var(--fondo-pagina));
+    color: var(--color-texto);
+    text-align: center;
+    animation: aparecer-pantalla-final .75s ease both;
+}
+
+.pantalla-gracias::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 16px;
+    border: 1px solid var(--color-linea);
+    outline: 1px solid rgba(177, 139, 108, .18);
+    outline-offset: 5px;
+    pointer-events: none;
+}
+
+.cierre-gracias {
+    width: min(100%, 470px);
+    margin: auto;
+    padding: 38px 18px;
+    animation: contenido-gracias .8s ease both;
+}
+
+.final-sobrelinea {
+    color: var(--marron-medio);
+    font-family: var(--fuente-formal);
+    font-size: .66rem;
+    letter-spacing: .2em;
+}
+
+.final-ornamento {
+    margin: 22px 0 9px;
+    color: var(--color-acento);
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.frase-final {
+    margin: 0;
+    color: var(--color-texto-oscuro);
+    font-family: var(--fuente-decorativa);
+    font-size: clamp(3.5rem, 12vw, 4.6rem);
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.mensaje-final {
+    max-width: 350px;
+    margin: 19px auto 24px;
+    color: var(--color-texto);
+    font-family: var(--fuente-titulos);
+    font-size: 1.35rem;
+    line-height: 1.55;
+}
+
+.fecha-final {
+    color: var(--color-texto-oscuro);
+    font-family: var(--fuente-formal);
+    font-size: .65rem;
+    letter-spacing: .1em;
+    line-height: 1.9;
+}
+
+.final-linea {
+    width: 55px;
+    height: 1px;
+    margin: 22px auto 17px;
+    background: var(--color-linea);
+}
+
+.firma {
+    color: var(--color-texto-oscuro);
+    font-family: var(--fuente-decorativa);
+    font-size: 2.15rem;
+    line-height: 1.3;
+}
+
+.nota-final {
+    max-width: 350px;
+    margin: 17px auto 0;
+    color: var(--color-texto);
+    font-size: .95rem;
+    line-height: 1.45;
+}
+
+.boton-volver {
+    min-width: min(100%, 280px);
+    margin-top: 25px;
+    padding: 12px 20px;
+}
+
+@keyframes aparecer-pantalla-final {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes contenido-gracias {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================================
+12. CONFETI
+========================================================= */
+.confeti {
+    position: fixed; z-index: 10; top: -15px; width: 7px; height: 10px;
+    background: var(--color-confeti); opacity: .8; pointer-events: none;
+    animation: caer-confeti linear forwards;
+}
+
+@keyframes caer-confeti { 
+    to { transform: translateY(110vh) rotate(760deg); opacity: .12; } }
+
+/* =========================================================
+13. ADAPTACIÓN A CELULARES
+========================================================= */
+@media (max-width: 380px) {
+    .portada-inicial { padding: 20px 14px; }
+    .marco-portada { inset: 12px; }
+    .escena-sobre { padding: 18px 7px; }
+    .sobre { height: 180px; }
+    .tarjeta-sobre { height: 180px; margin-bottom: -180px; }
+    .mensaje-sobre { font-size: 1.15rem; }
+    .portada-pie { font-size: .55rem; gap: 7px; }
+    .sobre-etiqueta { font-size: .6rem; }
+    .invitacion { width: min(100% - 18px, 488px); }
+    .portada, .seccion-invitacion { padding-right: 17px; padding-left: 17px; }
+    .cuenta-regresiva { gap: 11px; }
+    .unidad-tiempo { min-width: 45px; }
+    .equipos-bebe { gap: 8px; margin-top: 10px; margin-bottom: 15px; }
+    .imagen-equipo { width: 45%; height: 150px; }
+    .modal-juego { padding: 12px; }
+    .contenido-modal { max-height: 90vh; padding: 34px 18px 23px; }
+    .titulo-modal { font-size: 2.35rem; }
+    .pantalla-gracias { padding: 30px 20px; }
+    .pantalla-gracias::before { inset: 12px; }
+    .cierre-gracias { padding: 25px 10px; }
+    .mensaje-final { font-size: 1.2rem; }
+    .final-sobrelinea, .fecha-final { font-size: .59rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    .boton-abrir-sobre { animation: none !important; }
+}
