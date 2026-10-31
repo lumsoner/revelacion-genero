@@ -3,10 +3,10 @@
    Editá acá la fecha, el horario, la dirección y el WhatsApp.
    ========================================================= */
 const CONFIGURACION_EVENTO = {
-    fecha: "2026-11-14T16:00:00",
+    fecha: "2026-11-14T14:00:00",
     fechaVisible: "14 DE NOVIEMBRE",
     diaVisible: "SÁBADO",
-    horarioVisible: "16:00 HS",
+    horarioVisible: "14:00 HS",
     direccion: "Belgrano 871",
     enlaceMapa: "https://maps.app.goo.gl/Y6sqUNUkSPF4omcJ9?g_st=iw",
     numeroWhatsApp: "5491132115959",
